@@ -53,7 +53,11 @@ export class UserController {
     async login(request: Request, response: Response, next: NextFunction) {
         const { email, password } = request.body;
 
-        return { email, password }
+        const user = await this.userRepository.findOne({
+            where: {email, password}
+        })
+
+        return user
     }
 
 }
