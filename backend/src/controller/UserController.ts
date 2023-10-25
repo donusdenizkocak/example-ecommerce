@@ -59,7 +59,7 @@ export class UserController {
         })
 
         const token = jwt.sign({
-            exp: Math.floor(Date.now() / 1000) + 10, 
+            exp: Math.floor(Date.now() / 1000) + 60, 
             data: user,
         }, "secret")
 
@@ -69,9 +69,22 @@ export class UserController {
             return false
     }
 
-    async me(request: Request, response: Response, next: NextFunction) {
-        console.log(request.headers.authorization);
-        
-        return jwt.verify(request.headers.authorization, "secret")
+    async me(request: Request, response: Response, next: NextFunction) {        
+        try {
+            const isLogin: any = jwt.verify(request.headers.authorization, "secret");
+
+            const email = isLogin.data.email;
+
+            const user = await this.userRepository.findOne({
+                where: { email }
+            })
+    
+            if (!user) {
+                return "unregistered user"
+            }
+            return user
+        } catch {
+            return false
+        }
     }
 }
