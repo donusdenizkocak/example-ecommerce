@@ -22,7 +22,7 @@ export const Routes = [{
     action: "remove"
 }, {
     method: "post",
-    route: "/login",
+    route: "/users/login",
     controller: UserController,
     action: "login"
 }]

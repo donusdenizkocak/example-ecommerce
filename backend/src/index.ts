@@ -37,7 +37,8 @@ AppDataSource.initialize().then(async () => {
     // insert new users for test
     await AppDataSource.manager.save(
         AppDataSource.manager.create(User, {
-            email: "abc@xyz",
+            email: "abc@xyz.com",
+            password: "1234",
             phone: "05001112233",
             firstName: "Timber",
             lastName: "Saw"
@@ -46,7 +47,8 @@ AppDataSource.initialize().then(async () => {
 
     await AppDataSource.manager.save(
         AppDataSource.manager.create(User, {
-            email: "def@xyz",
+            email: "def@xyz.com",
+            password: "1234",
             phone: "05001112244",
             firstName: "Phantom",
             lastName: "Assassin"

@@ -54,10 +54,13 @@ export class UserController {
         const { email, password } = request.body;
 
         const user = await this.userRepository.findOne({
-            where: {email, password}
+            where: { email, password }
         })
 
-        return user
+        if (user)
+            return user
+        else
+            return false
     }
 
 }

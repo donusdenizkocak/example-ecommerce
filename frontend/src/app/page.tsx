@@ -14,9 +14,9 @@ export default function Home() {
       },
       body: JSON.stringify({email, password})
     };
-    fetch('http://localhost:3040/login', options)
+    fetch('http://localhost:3040/users/login', options)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => alert(data.firstName))
       .catch(error => console.error(error));
   }
 
