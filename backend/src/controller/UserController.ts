@@ -1,6 +1,7 @@
 import { AppDataSource } from "../data-source"
 import { NextFunction, Request, Response } from "express"
 import { User } from "../entity/User"
+import jwt = require('jsonwebtoken');
 
 export class UserController {
 
@@ -57,8 +58,13 @@ export class UserController {
             where: { email, password }
         })
 
+        const token = jwt.sign({
+            exp: Math.floor(Date.now() / 1000) + 60 * 60, 
+            data: user,
+        }, "secret")
+
         if (user)
-            return user
+            return token
         else
             return false
     }
