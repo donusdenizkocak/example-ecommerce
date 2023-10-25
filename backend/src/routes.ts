@@ -6,11 +6,6 @@ export const Routes = [{
     controller: UserController,
     action: "all"
 }, {
-    method: "get",
-    route: "/users/:id",
-    controller: UserController,
-    action: "one"
-}, {
     method: "post",
     route: "/users",
     controller: UserController,
@@ -25,4 +20,14 @@ export const Routes = [{
     route: "/users/login",
     controller: UserController,
     action: "login"
+}, {
+    method: "get",
+    route: "/users/me",
+    controller: UserController,
+    action: "me"
+}, {
+    method: "get",
+    route: "/users/:id",
+    controller: UserController,
+    action: "one"
 }]

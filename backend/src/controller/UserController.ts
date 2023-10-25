@@ -59,7 +59,7 @@ export class UserController {
         })
 
         const token = jwt.sign({
-            exp: Math.floor(Date.now() / 1000) + 60 * 60, 
+            exp: Math.floor(Date.now() / 1000) + 10, 
             data: user,
         }, "secret")
 
@@ -69,4 +69,9 @@ export class UserController {
             return false
     }
 
+    async me(request: Request, response: Response, next: NextFunction) {
+        console.log(request.headers.authorization);
+        
+        return jwt.verify(request.headers.authorization, "secret")
+    }
 }
