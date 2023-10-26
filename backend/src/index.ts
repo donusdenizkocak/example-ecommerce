@@ -7,7 +7,7 @@ import { User } from "./entity/User"
 var cors = require('cors');
 
 AppDataSource.initialize().then(async () => {
-// fork test işlemi
+// fork test işlemi -- test işlemi
     // create express app
     const app = express()
     app.use(bodyParser.json())
