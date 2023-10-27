@@ -33,22 +33,24 @@ export default function Home() {
       });
   };
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <main className="flex min-h-screen flex-col items-center p-24 bg-white">
       <input
         type="text"
-        className="mb-1 text-black"
+        className="mb-1 text-black border border-gray-600 px-3 py-1"
         onChange={(e: any) => setEmail(e.target.value)}
+        placeholder="email"
       />
       <input
         type="password"
-        className="mb-1 text-black"
+        className="mb-1 text-black border border-gray-600 px-3 py-1"
         onChange={(e: any) => setPassword(e.target.value)}
+        placeholder="password"
       />
-      <button type="submit" onClick={handleLogin}>
+      <button type="submit" onClick={handleLogin} className="text-black">
         Login
       </button>
       <hr />
-      <button type="button" onClick={handleMe}>
+      <button type="button" onClick={handleMe} className="text-black">
         Doğrula
       </button>
     </main>
