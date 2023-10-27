@@ -64,26 +64,6 @@ export default function Home() {
   } 
 
   return (
-<<<<<<< HEAD
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <input
-        type="text"
-        className="mb-1 text-black"
-        onChange={(e: any) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        className="mb-1 text-black"
-        onChange={(e: any) => setPassword(e.target.value)}
-      />
-      <button type="submit" onClick={handleLogin} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Login
-      </button>
-      <hr />
-      <button type="button" onClick={handleMe} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Doğrula
-      </button>
-=======
     <main className="flex min-h-screen flex-col items-center p-5 bg-white">
       {token === "" ? (
         <>
@@ -116,7 +96,6 @@ export default function Home() {
           return <div key={index}>{k.title} {k.price} <button onClick={() => handleAddProduct(k)}>ekle</button></div>
         })}
       </div>
->>>>>>> 34952ed2c0a7e750ec97d41694ecd4a187659b5b
     </main>
   );
 }
