@@ -1,8 +1,7 @@
-"use client";
+"use client"
 
 import { useState } from "react";
 import axios from "axios";
-import { error } from "console";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -53,5 +52,5 @@ export default function Home() {
         Doğrula
       </button>
     </main>
-  );
+  )
 }
