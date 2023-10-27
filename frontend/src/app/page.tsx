@@ -2,12 +2,15 @@
 
 import { use, useEffect, useState } from "react";
 import axios from "axios";
+import { List } from "postcss/lib/list";
+import { log } from "console";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const [user, setUser] = useState<any>({});
+  const [products, setProducts] = useState<any>([]);
 
   const handleLogin = () => {
     axios
@@ -23,6 +26,17 @@ export default function Home() {
   useEffect(() => {
     if (token !== "") me();
   }, [token]);
+  
+  useEffect(() => {
+    axios
+      .get("http://localhost:3040/products")
+      .then((response: any) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const me = () => {
     axios.defaults.baseURL = "http://localhost:3040/";
@@ -36,8 +50,21 @@ export default function Home() {
         console.log(error);
       });
   };
+
+  const handleAddProduct = (k: any) =>{
+    axios.defaults.baseURL = "http://localhost:3040/";
+    axios
+      .post("add-movement", k)
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } 
+
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 bg-white">
+    <main className="flex min-h-screen flex-col items-center p-5 bg-white">
       {token === "" ? (
         <>
           <input
@@ -63,6 +90,12 @@ export default function Home() {
           </div>
         </>
       )}
+      <hr className="my-2 border border-red-900 w-full"/>
+      <div className="text-black">
+        {products.map((k: any, index: number) =>  {
+          return <div key={index}>{k.title} {k.price} <button onClick={() => handleAddProduct(k)}>ekle</button></div>
+        })}
+      </div>
     </main>
   );
 }
