@@ -6,6 +6,7 @@ import { List } from "postcss/lib/list";
 import { log } from "console";
 
 export default function Home() {
+  const [isDeleted, setIsDeleted] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
@@ -112,8 +113,9 @@ export default function Home() {
         </>
       )}
       <hr className="my-2 border border-red-900 w-full" />
+              <button onClick={() => setIsDeleted(!isDeleted)} className="m-1 text-black">arşiv ürünlerini {isDeleted ? 'gizle' : 'göster'}</button>
       <div className="text-black">
-        {products.filter((k: any) => k.is_delete !== true).map((k: any, index: number) => {
+        {products.filter((k: any) => k.is_delete === isDeleted).map((k: any, index: number) => {
           return (
             <div key={index}>
               {k.title} {k.price}
@@ -124,7 +126,7 @@ export default function Home() {
                 className="text-black border border-gray-600"
               />
               <button onClick={() => handleAddProduct(k)} className="m-1">ekle</button>
-              <button onClick={() => handleDeleteProduct(k)} className="m-1">sil</button>
+              <button onClick={() => handleDeleteProduct(k)} className="m-1">{isDeleted ? 'arşivden çıkart' : 'arşive gönder'}</button>
             </div>
           );
         })}
