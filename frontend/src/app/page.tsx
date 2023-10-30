@@ -113,7 +113,7 @@ export default function Home() {
         </>
       )}
       <hr className="my-2 border border-red-900 w-full" />
-              <button onClick={() => setIsDeleted(!isDeleted)} className="m-1 text-black">silinen ürünleri {isDeleted ? 'gizle' : 'göster'}</button>
+              <button onClick={() => setIsDeleted(!isDeleted)} className="m-1 text-black">arşiv ürünlerini {isDeleted ? 'gizle' : 'göster'}</button>
       <div className="text-black">
         {products.filter((k: any) => k.is_delete === isDeleted).map((k: any, index: number) => {
           return (
