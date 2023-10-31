@@ -1,11 +1,15 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { List } from "postcss/lib/list";
-import { log } from "console";
+import { useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "@/store";
+import {login} from "@/store/apps/login";
 
 export default function Home() {
+  // ** Redux
+  const dispatch = useDispatch<AppDispatch>()
+
   const [isDeleted, setIsDeleted] = useState(true);
   const [isDeletedLoading, setIsDeletedLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -15,14 +19,15 @@ export default function Home() {
   const [products, setProducts] = useState<any>([]);
 
   const handleLogin = () => {
-    axios
+    dispatch(login({email:email, password:password}))
+    /*axios
       .post("http://localhost:3040/users/login", { email, password })
       .then((response: any) => {
         setToken(response.data);
       })
       .catch((error) => {
         console.log(error);
-      });
+      });*/
   };
 
   useEffect(() => {
