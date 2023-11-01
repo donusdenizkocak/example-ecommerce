@@ -48,16 +48,6 @@ export const Routes = [{
     controller: MovementController,
     action: "addMovement"
 }, {
-    method: "delete",
-    route: "/movement/:id",
-    controller: MovementController,
-    action: "deleteMovement"
-}, {
-    method: "get",
-    route: "/payment",
-    controller: MovementController,
-    action: "payment"
-}, {
     method: "get",
     route: "/movements",
     controller: MovementController,
