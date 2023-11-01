@@ -18,14 +18,14 @@ export class AddressController {
         })
 
         const address = Object.assign(new Address(), {
-            line,
-            post_code,
-            district,
-            city,
-            country,
+            line: line,
+            post_code: post_code,
+            district: district,
+            city: city,
+            country: country,
             user
         })
 
-        return this.addressRepository.save(user)
+        return this.addressRepository.save(address)
     }
 }
