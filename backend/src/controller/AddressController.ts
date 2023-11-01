@@ -26,6 +26,6 @@ export class AddressController {
             user
         })
 
-        return this.addressRepository.save(user)
+        return this.addressRepository.save(address)
     }
 }
